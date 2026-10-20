@@ -47,7 +47,7 @@
       border-radius: 12px;
       font-size: 16px;
     ">
-    Página web en preparación
+    Abrir página web
   </button>
 </div>
 
@@ -104,28 +104,53 @@
 const mensaje = document.getElementById("textoMensaje");
 
 const botonWeb = document.getElementById("botonWeb");
+const enlacesWeb = {
+  1: "https://florcogo11.wixsite.com/huellas-africanas",
+  2: "https://florcogo11.wixsite.com/huellas-africanas/blank-1",
+  3: "https://florcogo11.wixsite.com/huellas-africanas/blank-3"
+};
       for (let i = 0; i < 6; i++) {
         const tarjeta = document.getElementById("tarjeta" + i);
 
         
 tarjeta.addEventListener("targetFound", function() {
-botonWeb.style.display =
-  (i >= 1 && i <= 3) ? "block" : "none";
   if (i === 1) {
-    mensaje.textContent = "Cadena de ochos - Página web en preparación";
+    mensaje.textContent = "Cadena de ochos";
+    botonWeb.style.display = "block";
+    botonWeb.disabled = false;
+    botonWeb.textContent = "Abrir inicio";
+    botonWeb.onclick = function() {
+      window.location.href = enlacesWeb[1];
+    };
   } else if (i === 2) {
-    mensaje.textContent = "Hoja de palma - Página web en preparación";
+    mensaje.textContent = "Hoja de palma";
+    botonWeb.style.display = "block";
+    botonWeb.disabled = false;
+    botonWeb.textContent = "Abrir página interactiva";
+    botonWeb.onclick = function() {
+      window.location.href = enlacesWeb[2];
+    };
   } else if (i === 3) {
-    mensaje.textContent = "Pipa - Página web en preparación";
+    mensaje.textContent = "Pipa";
+    botonWeb.style.display = "block";
+    botonWeb.disabled = false;
+    botonWeb.textContent = "Abrir datos del museo";
+    botonWeb.onclick = function() {
+      window.location.href = enlacesWeb[3];
+    };
   } else {
     mensaje.textContent = "¡Imagen " + (i + 1) + " reconocida!";
+    botonWeb.style.display = "none";
+    botonWeb.disabled = true;
   }
 });
-
 
         tarjeta.addEventListener("targetLost", function() {
           mensaje.textContent = "Apuntá a una tarjeta";
 	botonWeb.style.display = "none";
+	botonWeb.disabled = true;
+  	botonWeb.onclick = null;
+
         });
       }
     });
