@@ -34,6 +34,26 @@
     Apuntá la cámara a una de las 6 tarjetas
   </div>
 
+
+<button id="botonWeb" disabled
+  style="
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10000;
+    background: #333333;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 16px;
+    white-space: nowrap;
+  ">
+  Página web en preparación
+</button>
+
   <a-scene
     mindar-image="imageTargetSrc: ./targets.mind; maxTrack: 1;"
     color-space="sRGB"
@@ -83,12 +103,14 @@
   <script>
     window.addEventListener("load", function() {
       const mensaje = document.getElementById("mensaje");
-
+const botonWeb = document.getElementById("botonWeb");
       for (let i = 0; i < 6; i++) {
         const tarjeta = document.getElementById("tarjeta" + i);
 
         
 tarjeta.addEventListener("targetFound", function() {
+botonWeb.style.display =
+  (i >= 1 && i <= 3) ? "block" : "none";
   if (i === 1) {
     mensaje.textContent = "Cadena de ochos - Página web en preparación";
   } else if (i === 2) {
@@ -103,6 +125,7 @@ tarjeta.addEventListener("targetFound", function() {
 
         tarjeta.addEventListener("targetLost", function() {
           mensaje.textContent = "Apuntá a una tarjeta";
+	botonWeb.style.display = "none";
         });
       }
     });
