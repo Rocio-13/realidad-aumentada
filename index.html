@@ -87,9 +87,19 @@
       for (let i = 0; i < 6; i++) {
         const tarjeta = document.getElementById("tarjeta" + i);
 
-        tarjeta.addEventListener("targetFound", function() {
-          mensaje.textContent = "¡Imagen " + (i + 1) + " reconocida!";
-        });
+        
+tarjeta.addEventListener("targetFound", function() {
+  if (i === 1) {
+    mensaje.textContent = "Cadena de ochos - Página web en preparación";
+  } else if (i === 2) {
+    mensaje.textContent = "Hoja de palma - Página web en preparación";
+  } else if (i === 3) {
+    mensaje.textContent = "Pipa - Página web en preparación";
+  } else {
+    mensaje.textContent = "¡Imagen " + (i + 1) + " reconocida!";
+  }
+});
+
 
         tarjeta.addEventListener("targetLost", function() {
           mensaje.textContent = "Apuntá a una tarjeta";
