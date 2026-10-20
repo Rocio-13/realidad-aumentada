@@ -30,29 +30,27 @@
 </head>
 
 <body>
-  <div id="mensaje">
+ 
+<div id="mensaje">
+  <span id="textoMensaje">
     Apuntá la cámara a una de las 6 tarjetas
-  </div>
+  </span>
 
+  <button id="botonWeb" disabled
+    style="
+      display: none;
+      margin: 12px auto 0;
+      padding: 12px 18px;
+      background: #333333;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 16px;
+    ">
+    Página web en preparación
+  </button>
+</div>
 
-<button id="botonWeb" disabled
-  style="
-    display: none;
-    position: fixed;
-    top: 120px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 999999;
-    background: #333333;
-    color: white;
-    border: none;
-    border-radius: 12px;
-    padding: 15px 20px;
-    font-size: 16px;
-    white-space: nowrap;
-  ">
-  Página web en preparación
-</button>
 
   <a-scene
     mindar-image="imageTargetSrc: ./targets.mind; maxTrack: 1;"
@@ -102,7 +100,9 @@
 
   <script>
     window.addEventListener("load", function() {
-      const mensaje = document.getElementById("mensaje");
+      
+const mensaje = document.getElementById("textoMensaje");
+
 const botonWeb = document.getElementById("botonWeb");
       for (let i = 0; i < 6; i++) {
         const tarjeta = document.getElementById("tarjeta" + i);
